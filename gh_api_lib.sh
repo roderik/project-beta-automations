@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 TMP_STORE_LOCATION=/tmp/api_response.json
 
@@ -35,6 +35,7 @@ function extractStatusFieldID() {
 
 # extractStatusFieldNodeSettingsByValue returns a list of available settings
 function extractStatusFieldNodeSettingsByValue() {
+    cat $TMP_STORE_LOCATION
     local STATUS_NAME=$1
     jq ".data.organization.projectNext.fields.nodes[] | select(.name== \"Status\") | .settings | fromjson.options[] | select(.name==\"$STATUS_NAME\") |.id" $TMP_STORE_LOCATION | sed -e "s+\"++g"
 }
