@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 organization_name=$1 # organization name
 organization_project_id=$2 # organization id
